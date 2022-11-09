@@ -34,9 +34,11 @@ public class Page {
         Pattern checkURL = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
         Matcher checkURLM = checkURL.matcher(text);
 
-        if (!text.toString().equals("") && !checkURLM.matches()){
+        if (!text.toString().equals("") && !checkURLM.matches()) {
+
             PageThread page = new PageThread(webEngine, text);
             page.start();
+
         }
     }
 }

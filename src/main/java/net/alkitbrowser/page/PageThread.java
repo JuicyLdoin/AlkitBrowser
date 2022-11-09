@@ -15,6 +15,7 @@ class PageThread extends Thread {
 
     @Override
     public void run() {
+
 //        switch (systemNumber) {
 //            case 0 -> webEngine.load("https://duckduckgo.com/" + text);
 //            case 1 -> webEngine.load("https://www.google.ru/search?q=" + text);
@@ -22,6 +23,8 @@ class PageThread extends Thread {
 //            case 3 -> webEngine.load("https://search.brave.com/search?q=" + text);
 //            case 4 -> webEngine.load(" https://search.yahoo.com/search?p=" + text);
 //        }
+
         webEngine.load("https://duckduckgo.com/" + text);
+
     }
 }
