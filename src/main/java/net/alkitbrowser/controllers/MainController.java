@@ -63,7 +63,7 @@ public class MainController implements Initializable {
             return;
 
         if (openedPage.equals(page))
-            openedPage = pages.get(0);
+            setOpenedPage(pages.get(0));
 
         pages.remove(page);
 
