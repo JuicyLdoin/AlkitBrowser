@@ -21,17 +21,18 @@ public class Page {
         Matcher checkURLM = checkURL.matcher(text);
         if (!text.equals("")){
             if (!checkURLM.matches()){
-                webEngine.load("https://duckduckgo.com/" + text);
-//                newPage page = new newPage(text);
-//                page.run();
+                newPage page = new newPage(webEngine, text);
+                page.run();
             }
         }
     }
 }
 @AllArgsConstructor
 class newPage extends Thread{
-    private StringBuffer url;
+    private WebEngine webEngine;
+    private StringBuffer text = new StringBuffer("");
     @Override
     public void run() {
+        webEngine.load("https://duckduckgo.com/" + text);
     }
 }
