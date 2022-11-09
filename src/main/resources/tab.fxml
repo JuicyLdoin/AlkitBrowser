@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox id="background" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" stylesheets="@styles/tab.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alkitbrowser.controllers.TabController">
+   <children>
+      <Label fx:id="titleLabel" contentDisplay="CENTER" prefHeight="17.0" prefWidth="175.0" text="Label" textFill="WHITE" />
+      <Button id="closeButton" mnemonicParsing="false" onMouseClicked="#onCloseTab" text="x" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+   </children>
+   <padding>
+      <Insets left="10.0" right="5.0" />
+   </padding>
+</HBox>

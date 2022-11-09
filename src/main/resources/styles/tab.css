@@ -1,0 +1,12 @@
+#background {
+    -fx-background-color: black;
+    -fx-background-radius: 30;
+}
+
+#closeButton {
+    -fx-background-color: transparent;
+}
+
+#closeButton .hover {
+    -fx-background-color: #5B5B5B;
+}
