@@ -25,6 +25,9 @@ public class MainController implements Initializable {
     WebView web;
     WebEngine webEngine;
 
+    // открытое окно
+    Page openedPage;
+
     // список окон
     final ObservableList<Page> pages = FXCollections.observableArrayList();
     @FXML
@@ -34,12 +37,42 @@ public class MainController implements Initializable {
     @FXML
     TextField requestField;
 
+    public void setOpenedPage(Page openedPage) {
+
+        this.openedPage = openedPage;
+
+    }
+
+    // добавление нового окна
     public void addPage() {
 
-        Page page = new Page();
+        Page page = new Page(this);
         page.createNewPage(webEngine, "");
 
+        try {
+
+            page.createNewPage(webEngine, requestField);
+
+        } catch (MalformedURLException e) {
+
+            throw new RuntimeException(e);
+
+        }
+
+        setOpenedPage(page);
         pages.add(page);
+
+    }
+
+    public void removePage(Page page) {
+
+        if (pages.size() == 1)
+            return;
+
+        if (openedPage.equals(page))
+            openedPage = pages.get(0);
+
+        pages.remove(page);
 
     }
 
@@ -48,6 +81,7 @@ public class MainController implements Initializable {
 
         webEngine = web.getEngine();
 
+        // при изменении списка окон обновляем их отображение
         pages.addListener((javafx.beans.Observable observable) -> {
 
             tabs.getChildren().clear();
@@ -58,11 +92,9 @@ public class MainController implements Initializable {
 
     public void updateRequest() {
 
-        Page page = new Page();
-
         try {
 
-            page.createNewPage(webEngine, requestField);
+            openedPage.createNewPage(webEngine, requestField);
 
         } catch (MalformedURLException e) {
 
