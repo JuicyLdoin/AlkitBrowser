@@ -10,6 +10,7 @@ module com.example.alkitbrowser {
     requires org.kordamp.bootstrapfx.core;
 
     opens net.alkitbrowser to javafx.fxml, lombok;
+    opens net.alkitbrowser.controllers to javafx.fxml, javafx.web, lombok;
 
     exports net.alkitbrowser;
 
