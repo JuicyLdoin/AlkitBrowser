@@ -57,6 +57,7 @@ public class MainController implements Initializable {
 
     }
 
+    // удаление окна
     public void removePage(Page page) {
 
         if (pages.size() == 1)
@@ -86,6 +87,7 @@ public class MainController implements Initializable {
 
     }
 
+    // обновление запроса
     public void updateRequest() {
 
         try {
