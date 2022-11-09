@@ -13,6 +13,9 @@ import net.alkitbrowser.page.Page;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PageController {
 
+    @Setter
+    MainController mainController;
+
     @FXML
     @Setter
     HBox body;
@@ -30,7 +33,16 @@ public class PageController {
     }
 
     @FXML
-    private void onCloseTab() {
+    private void onPageClick() {
+
+        mainController.setOpenedPage(currentPage);
+
+    }
+
+    @FXML
+    private void onClosePage() {
+
+        mainController.removePage(currentPage);
 
     }
 }
