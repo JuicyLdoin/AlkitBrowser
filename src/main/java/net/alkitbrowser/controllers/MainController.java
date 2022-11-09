@@ -7,13 +7,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainController implements Initializable {
 
     @FXML
-    private WebView web;
+    public WebView web;
     private WebEngine webEngine;
 
     // поле окон
@@ -34,11 +37,11 @@ public class MainController implements Initializable {
     // обработка клика по кнопке поиска
     @FXML
     private void onFindClick() {
-
-        String text = requestField.getText();
-
-        if (!text.equals(""))
-            webEngine.load(text);
-
+        Page page = new Page();
+        try {
+            page.createNewPage(webEngine, requestField);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
