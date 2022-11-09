@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -10,6 +12,19 @@
       <WebView fx:id="web" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
-      <HBox id="tabsPane" fx:id="tabs" prefHeight="35.0" prefWidth="1080.0" BorderPane.alignment="CENTER" />
+      <VBox id="tabsPane" prefHeight="70.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox fx:id="tabs" prefHeight="60.0" prefWidth="1080.0" spacing="5.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <TextField fx:id="requestField" promptText="Введите поисковый запрос или URL ссылку" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onFindClick" text="Find" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </top>
 </BorderPane>
