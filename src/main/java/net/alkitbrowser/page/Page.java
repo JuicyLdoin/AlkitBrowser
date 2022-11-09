@@ -22,6 +22,8 @@ public class Page {
     final PageController pageController;
     PageThread pageThread;
 
+    String request;
+
     @SneakyThrows
     public Page(MainController mainController) {
 
@@ -48,6 +50,8 @@ public class Page {
 
         if (pageThread != null && pageThread.isAlive())
             pageThread.stop();
+
+        this.request = request;
 
         webEngine.load(request);
 
