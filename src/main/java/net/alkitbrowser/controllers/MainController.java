@@ -81,6 +81,9 @@ public class MainController implements Initializable {
             pages.forEach(page -> tabs.getChildren().add(page.getPageController().getBody()));
 
         });
+
+        addPage();
+
     }
 
     public void updateRequest() {
