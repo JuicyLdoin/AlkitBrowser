@@ -52,16 +52,6 @@ public class MainController implements Initializable {
         Page page = new Page(this);
         page.createNewPage(webEngine, "");
 
-        try {
-
-            page.createNewPage(webEngine, requestField);
-
-        } catch (MalformedURLException e) {
-
-            throw new RuntimeException(e);
-
-        }
-
         setOpenedPage(page);
         pages.add(page);
 
