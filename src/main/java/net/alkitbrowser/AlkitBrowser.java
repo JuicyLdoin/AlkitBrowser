@@ -26,8 +26,10 @@ public class AlkitBrowser extends Application {
         // Set options to stage
         // ==================================================
 
-        stage.setTitle("KitNotes");
+        stage.setTitle("AlkitBrowser");
         stage.setScene(scene);
+
+        stage.setFullScreen(true);
 
         stage.show();
 
