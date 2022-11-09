@@ -2,6 +2,7 @@ package net.alkitbrowser.page;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -26,9 +27,11 @@ public class Page {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/page.fxml"));
 
+        HBox body = fxmlLoader.load();
+
         pageController = fxmlLoader.getController();
 
-        pageController.setBody(fxmlLoader.load());
+        pageController.setBody(body);
         pageController.setCurrentPage(this);
 
     }
