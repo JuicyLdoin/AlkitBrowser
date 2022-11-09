@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Page {
-    private StringBuffer pageUrl = new StringBuffer("https://duckduckgo.com/");
-    private StringBuffer pageName = new StringBuffer("DuckDuckGo");
+    private volatile StringBuffer pageUrl = new StringBuffer("https://duckduckgo.com/");
+    private volatile StringBuffer pageName = new StringBuffer("DuckDuckGo");
 
     private static void createNewPage(){
 
