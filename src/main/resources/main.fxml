@@ -14,13 +14,17 @@
    <top>
       <VBox id="tabsPane" prefHeight="70.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="60.0" prefWidth="1080.0" spacing="5.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
             <HBox fx:id="tabs" prefHeight="60.0" prefWidth="1080.0" spacing="5.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
                <children>
-                  <TextField fx:id="requestField" promptText="Введите поисковый запрос или URL ссылку" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="requestField" onKeyPressed="#onFindEnter" promptText="Введите поисковый запрос или URL ссылку" HBox.hgrow="ALWAYS" />
                   <Button mnemonicParsing="false" onMouseClicked="#onFindClick" text="Find" />
                </children>
             </HBox>

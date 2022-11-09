@@ -3,6 +3,8 @@ package net.alkitbrowser.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -31,14 +33,29 @@ public class MainController implements Initializable {
 
     }
 
-    // обработка клика по кнопке поиска
-    @FXML
-    private void onFindClick() {
+    public void updateRequest() {
 
         String text = requestField.getText();
 
         if (!text.equals(""))
             webEngine.load(text);
+
+    }
+
+    // обработка клика по кнопке поиска
+    @FXML
+    private void onFindClick() {
+
+        updateRequest();
+
+    }
+
+    // обработка запроса при нажатии кнопки Enter
+    @FXML
+    private void onFindEnter(KeyEvent keyEvent) {
+
+        if (keyEvent.getCode().equals(KeyCode.ENTER))
+            updateRequest();
 
     }
 }
