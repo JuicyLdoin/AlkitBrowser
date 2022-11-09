@@ -6,9 +6,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
+import net.alkitbrowser.controllers.MainController;
 import net.alkitbrowser.controllers.PageController;
 
 import java.net.MalformedURLException;
@@ -16,14 +16,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Getter
-@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Page {
 
     final PageController pageController;
+    PageThread pageThread;
 
     @SneakyThrows
-    public Page() {
+    public Page(MainController mainController) {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/page.fxml"));
 
@@ -31,7 +31,9 @@ public class Page {
 
         pageController = fxmlLoader.getController();
 
+        pageController.setMainController(mainController);
         pageController.setBody(body);
+
         pageController.setCurrentPage(this);
 
     }
@@ -44,6 +46,9 @@ public class Page {
 
     public void createNewPage(WebEngine webEngine, String request) {
 
+        if (pageThread != null && pageThread.isAlive())
+            pageThread.stop();
+
         webEngine.load(request);
 
         StringBuffer requestBuffer = new StringBuffer(request);
@@ -53,8 +58,8 @@ public class Page {
 
         if (!request.equals("") && !checkURLM.matches()) {
 
-            PageThread page = new PageThread(webEngine, requestBuffer);
-            page.start();
+            pageThread = new PageThread(webEngine, requestBuffer);
+            pageThread.start();
 
         }
     }
