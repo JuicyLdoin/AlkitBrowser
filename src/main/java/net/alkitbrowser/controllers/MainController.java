@@ -8,6 +8,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import net.alkitbrowser.page.Page;
 
 import java.net.MalformedURLException;
 import java.net.URL;
