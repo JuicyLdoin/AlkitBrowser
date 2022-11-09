@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<HBox id="background" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" stylesheets="@styles/tab.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alkitbrowser.controllers.TabController">
+<HBox id="background" fx:id="body" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" stylesheets="@styles/tab.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alkitbrowser.controllers.PageController">
    <children>
       <Label fx:id="titleLabel" contentDisplay="CENTER" prefHeight="17.0" prefWidth="175.0" text="Label" textFill="WHITE" />
       <Button id="closeButton" mnemonicParsing="false" onMouseClicked="#onCloseTab" text="x" textFill="WHITE">

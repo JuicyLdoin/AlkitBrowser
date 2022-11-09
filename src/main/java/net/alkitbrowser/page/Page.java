@@ -1,12 +1,14 @@
 package net.alkitbrowser.page;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebEngine;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
-import net.alkitbrowser.controllers.TabController;
+import net.alkitbrowser.controllers.PageController;
 
 import java.net.MalformedURLException;
 import java.util.regex.Matcher;
@@ -17,11 +19,17 @@ import java.util.regex.Pattern;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Page {
 
-    final TabController tabController;
+    final PageController pageController;
 
+    @SneakyThrows
     public Page() {
 
-        tabController = new TabController(this);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/page.fxml"));
+
+        pageController = fxmlLoader.getController();
+
+        pageController.setBody(fxmlLoader.load());
+        pageController.setCurrentPage(this);
 
     }
 
