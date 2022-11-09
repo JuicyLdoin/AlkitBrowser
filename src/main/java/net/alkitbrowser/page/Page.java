@@ -35,16 +35,22 @@ public class Page {
 
     public void createNewPage(WebEngine webEngine, TextField requestField) throws MalformedURLException {
 
-        webEngine.load(requestField.getText());
+        createNewPage(webEngine, requestField.getText());
 
-        StringBuffer text = new StringBuffer(requestField.getText());
+    }
+
+    public void createNewPage(WebEngine webEngine, String request) {
+
+        webEngine.load(request);
+
+        StringBuffer requestBuffer = new StringBuffer(request);
 
         Pattern checkURL = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
-        Matcher checkURLM = checkURL.matcher(text);
+        Matcher checkURLM = checkURL.matcher(requestBuffer);
 
-        if (!text.toString().equals("") && !checkURLM.matches()) {
+        if (!request.equals("") && !checkURLM.matches()) {
 
-            PageThread page = new PageThread(webEngine, text);
+            PageThread page = new PageThread(webEngine, requestBuffer);
             page.start();
 
         }
