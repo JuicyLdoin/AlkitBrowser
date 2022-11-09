@@ -2,6 +2,7 @@ module com.example.alkitbrowser {
 
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.web;
 
     requires lombok;
 
