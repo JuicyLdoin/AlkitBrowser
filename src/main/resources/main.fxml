@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane>
+
+<BorderPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alkitbrowser.controllers.MainController">
+   <center>
+      <WebView fx:id="web" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <HBox id="tabsPane" fx:id="tabs" prefHeight="35.0" prefWidth="1080.0" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>
