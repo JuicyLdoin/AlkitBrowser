@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,11 +36,17 @@ public class MainController implements Initializable {
 
     public void updateRequest() {
 
-        String text = requestField.getText();
+        Page page = new Page();
 
-        if (!text.equals(""))
-            webEngine.load(text);
+        try {
 
+            page.createNewPage(webEngine, requestField);
+
+        } catch (MalformedURLException e) {
+
+            throw new RuntimeException(e);
+
+        }
     }
 
     // обработка клика по кнопке поиска
