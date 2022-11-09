@@ -62,7 +62,7 @@ public class Page {
 
         if (!request.equals("") && !checkURLM.matches()) {
 
-            pageThread = new PageThread(webEngine, requestBuffer);
+            pageThread = new PageThread(this, webEngine, requestBuffer);
             pageThread.start();
 
         }

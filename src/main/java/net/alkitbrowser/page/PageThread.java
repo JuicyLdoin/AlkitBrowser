@@ -7,7 +7,9 @@ import lombok.experimental.FieldDefaults;
 
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-class PageThread extends Thread {
+public class PageThread extends Thread {
+
+    Page page;
 
     WebEngine webEngine;
     StringBuffer text;
