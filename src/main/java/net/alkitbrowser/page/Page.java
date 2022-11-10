@@ -12,7 +12,6 @@ import net.alkitbrowser.Settings;
 import net.alkitbrowser.controllers.MainController;
 import net.alkitbrowser.controllers.PageController;
 
-import java.net.MalformedURLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,7 +41,13 @@ public class Page {
 
     }
 
-    public void createNewPage(WebEngine webEngine, TextField requestField) throws MalformedURLException {
+    public void createNewPage(WebEngine webEngine) {
+
+        createNewPage(webEngine, request);
+
+    }
+
+    public void createNewPage(WebEngine webEngine, TextField requestField) {
 
         createNewPage(webEngine, requestField.getText());
 

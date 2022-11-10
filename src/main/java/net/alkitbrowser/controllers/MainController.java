@@ -16,7 +16,6 @@ import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.Settings;
 import net.alkitbrowser.page.Page;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,7 +41,7 @@ public class MainController implements Initializable {
     public void setOpenedPage(Page openedPage) {
 
         requestField.setText(openedPage.getRequest());
-        webEngine.load(openedPage.getRequest());
+        openedPage.createNewPage(webEngine, openedPage.getRequest());
 
         this.openedPage = openedPage;
 
@@ -68,6 +67,7 @@ public class MainController implements Initializable {
         if (openedPage.equals(page))
             setOpenedPage(pages.get(0));
 
+        page.getPageThread().stop();
         pages.remove(page);
 
     }
@@ -92,26 +92,24 @@ public class MainController implements Initializable {
     // обновление запроса
     public void updateRequest() {
 
-        try {
+        openedPage.createNewPage(webEngine, requestField);
 
-            openedPage.createNewPage(webEngine, requestField);
-
-        } catch (MalformedURLException e) {
-
-            throw new RuntimeException(e);
-
-        }
     }
     public void setHistory(WebEngine engine){
+
         Settings settings = new Settings();
+
         WebHistory history = engine.getHistory();
         settings.setHistory(history);
+
         ObservableList<WebHistory.Entry> entries = history.getEntries();
+
         for (WebHistory.Entry entry : entries) {
+
             //тут выводить entry - историю поиска
+
         }
     }
-
 
     // обработка клика по кнопке поиска
     @FXML
