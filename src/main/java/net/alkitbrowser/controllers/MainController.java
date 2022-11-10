@@ -56,7 +56,7 @@ public class MainController implements Initializable {
 
     public void setOpenedPage(Page openedPage) {
 
-        requestField.setText(openedPage.getRequest());
+        requestField.setText(openedPage.getRequest().toString());
         openedPage.createNewPage(webEngine, openedPage.getRequest());
 
         this.openedPage = openedPage;

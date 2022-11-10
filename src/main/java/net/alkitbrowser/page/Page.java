@@ -23,7 +23,7 @@ public class Page {
     PageThread pageThread;
 
     //StringBuffer pageName = new StringBuffer();
-    String request;
+    StringBuffer request;
 
     @SneakyThrows
     public Page(MainController mainController) {
@@ -41,7 +41,7 @@ public class Page {
 
     }
 
-    public void setRequest(String request) {
+    public void setRequest(StringBuffer request) {
 
         this.request = request;
 
@@ -61,19 +61,25 @@ public class Page {
 
     public void createNewPage(WebEngine webEngine, String request) {
 
+        createNewPage(webEngine, new StringBuffer(request));
+
+    }
+
+    public void createNewPage(WebEngine webEngine, StringBuffer request) {
+
         if (pageThread != null && pageThread.isAlive())
             pageThread.stop();
 
         this.request = request;
 
-        webEngine.load(request);
+        webEngine.load(request.toString());
 
         StringBuffer requestBuffer = new StringBuffer(request);
 
         Pattern checkURL = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
         Matcher checkURLM = checkURL.matcher(requestBuffer);
 
-        if (!request.equals("") && !checkURLM.matches()) {
+        if (!request.toString().equals("") && !checkURLM.matches()) {
             Settings mySetting = new Settings();
 
             pageThread = new PageThread(this, webEngine, requestBuffer, mySetting.getSystemNumber());
