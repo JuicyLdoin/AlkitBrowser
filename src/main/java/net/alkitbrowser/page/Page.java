@@ -41,12 +41,6 @@ public class Page {
 
     }
 
-    public void setRequest(StringBuffer request) {
-
-        this.request = request;
-
-    }
-
     public void createNewPage(WebEngine webEngine) {
 
         createNewPage(webEngine, request);
