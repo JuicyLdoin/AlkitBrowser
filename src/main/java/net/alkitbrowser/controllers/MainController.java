@@ -142,12 +142,14 @@ public class MainController implements Initializable {
 
     }
 
+    @FXML
     private void onRefreshClick() {
 
         refreshPage();
 
     }
 
+    @FXML
     private void onHomeClick() {
 
         requestField.setText(new Settings().getSystem());
