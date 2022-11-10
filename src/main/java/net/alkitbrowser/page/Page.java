@@ -1,13 +1,17 @@
 package net.alkitbrowser.page;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
+import net.alkitbrowser.Settings;
 import net.alkitbrowser.controllers.MainController;
 import net.alkitbrowser.controllers.PageController;
 
@@ -21,9 +25,8 @@ public class Page {
 
     final PageController pageController;
     PageThread pageThread;
-
+    //StringBuffer pageName = new StringBuffer();
     String request;
-
     @SneakyThrows
     public Page(MainController mainController) {
 
@@ -61,8 +64,9 @@ public class Page {
         Matcher checkURLM = checkURL.matcher(requestBuffer);
 
         if (!request.equals("") && !checkURLM.matches()) {
+            Settings mySetting = new Settings();
 
-            pageThread = new PageThread(this, webEngine, requestBuffer);
+            pageThread = new PageThread(this, webEngine, requestBuffer, mySetting.getSystemNumber());
             pageThread.start();
 
         }

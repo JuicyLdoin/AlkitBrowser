@@ -9,9 +9,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import net.alkitbrowser.Settings;
 import net.alkitbrowser.page.Page;
 
 import java.net.MalformedURLException;
@@ -100,6 +102,16 @@ public class MainController implements Initializable {
 
         }
     }
+    public void setHistory(WebEngine engine){
+        Settings settings = new Settings();
+        WebHistory history = engine.getHistory();
+        settings.setHistory(history);
+        ObservableList<WebHistory.Entry> entries = history.getEntries();
+        for (WebHistory.Entry entry : entries) {
+            //тут выводить entry - историю поиска
+        }
+    }
+
 
     // обработка клика по кнопке поиска
     @FXML
@@ -115,7 +127,6 @@ public class MainController implements Initializable {
 
         if (keyEvent.getCode().equals(KeyCode.ENTER))
             updateRequest();
-
     }
 
     @FXML
@@ -123,5 +134,29 @@ public class MainController implements Initializable {
 
         addPage();
 
+    }
+    //тут клавиши для работы со страницой, их можно изменить
+    // (как сделать комбинацию ctrl + колёсеко мыши я не нашёл поэтому увеличение страцины кривовато, так же добавление их в fxml за тобой)
+    @FXML
+    private void onFindF5(KeyEvent keyEvent){
+        if (keyEvent.getCode().equals(KeyCode.F5)){
+            webEngine.reload();
+        }
+    }
+    @FXML
+    private void onFindCTRL(KeyEvent keyEvent) {
+        Settings settings = new Settings();
+        if (keyEvent.getCode().equals(KeyCode.CONTROL)){
+            web.setZoom(settings.getZoom() + 0.25);
+            settings.setZoom((int) (settings.getZoom() + 0.25));
+        }
+    }
+    @FXML
+    private void onFindALT(KeyEvent keyEvent) {
+        Settings settings = new Settings();
+        if (keyEvent.getCode().equals(KeyCode.ALT)){
+            web.setZoom(settings.getZoom() - 0.25);
+            settings.setZoom((int) (settings.getZoom() - 0.25));
+        }
     }
 }
