@@ -9,15 +9,15 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@styles/settings.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alkitbrowser.controllers.SettingsController">
    <top>
-      <HBox id="backPane" prefHeight="50.0" prefWidth="1080.0" BorderPane.alignment="CENTER_LEFT">
+      <HBox id="backPane" fillHeight="false" prefHeight="50.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#onBackClick" prefHeight="25.0" prefWidth="50.0" text="Back" HBox.hgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="25.0" prefWidth="50.0" text="Save">
+            <Pane prefHeight="0.0" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="25.0" prefWidth="50.0" text="Save" HBox.hgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -29,9 +29,9 @@
       </HBox>
    </top>
    <left>
-      <VBox id="optionsPane" prefHeight="670.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <VBox id="optionsPane" fillWidth="false" prefHeight="670.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </left>
    <center>
-      <VBox id="settingsPane" prefHeight="670.0" prefWidth="880.0" BorderPane.alignment="CENTER" />
+      <VBox id="settingsPane" fx:id="contentBox" fillWidth="false" prefHeight="670.0" prefWidth="880.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

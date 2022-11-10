@@ -1,6 +1,7 @@
 package net.alkitbrowser.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.layout.VBox;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
@@ -14,6 +15,9 @@ public class SettingsController {
     final AlkitBrowser alkitBrowser = AlkitBrowser.getAlkitBrowser();
 
     Settings settings;
+
+    @FXML
+    private VBox contentBox;
 
     public void setSettings(Settings settings) {
 
