@@ -19,9 +19,9 @@
                   <Insets left="5.0" right="5.0" />
                </padding>
                <children>
-                  <ScrollPane id="tabsScroll" minHeight="40.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="960.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+                  <ScrollPane id="tabsScroll" minHeight="40.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="940.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
                      <content>
-                        <HBox fx:id="tabs" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="950.0" spacing="5.0" />
+                        <HBox fx:id="tabs" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="930.0" spacing="5.0" />
                      </content>
                   </ScrollPane>
                   <Button mnemonicParsing="false" onMouseClicked="#onAddPage" text="+" HBox.hgrow="ALWAYS">
@@ -29,7 +29,7 @@
                         <Insets top="7.0" />
                      </HBox.margin></Button>
                   <Separator id="tabsSeparator" orientation="VERTICAL" prefHeight="40.0" prefWidth="2.0" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSettingsClick" text="Settings" HBox.hgrow="ALWAYS">
+                  <Button mnemonicParsing="false" onMouseClicked="#onSettingsClick" text="Настройки" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets top="7.0" />
                      </HBox.margin>
@@ -45,18 +45,18 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </padding>
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#onRefreshClick" text="Refresh">
+                  <Button mnemonicParsing="false" onMouseClicked="#onRefreshClick" text="Обновить">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" text="Home">
+                  <Button mnemonicParsing="false" text="Главная">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                   <TextField fx:id="requestField" onKeyPressed="#onFindEnter" promptText="Введите поисковый запрос или URL ссылку" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onFindClick" text="Find" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onFindClick" text="Поиск" />
                </children>
             </HBox>
          </children>
