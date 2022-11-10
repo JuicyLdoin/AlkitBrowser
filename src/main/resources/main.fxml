@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.web.*?>
@@ -30,11 +31,21 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="35.0" prefWidth="1080.0" spacing="5.0">
+            <HBox onMouseClicked="#onHomeClick" prefHeight="35.0" prefWidth="1080.0" spacing="5.0">
                <padding>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </padding>
                <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#onRefresh" text="Refresh">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Home">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                   <TextField fx:id="requestField" onKeyPressed="#onFindEnter" promptText="Введите поисковый запрос или URL ссылку" HBox.hgrow="ALWAYS" />
                   <Button mnemonicParsing="false" onMouseClicked="#onFindClick" text="Find" />
                </children>

@@ -74,6 +74,12 @@ public class MainController implements Initializable {
 
     }
 
+    public void refreshPage() {
+
+        webEngine.reload();
+
+    }
+
     // удаление окна
     public void removePage(Page page) {
 
@@ -126,6 +132,7 @@ public class MainController implements Initializable {
 
         if (keyEvent.getCode().equals(KeyCode.ENTER))
             updateRequest();
+
     }
 
     @FXML
@@ -134,28 +141,55 @@ public class MainController implements Initializable {
         addPage();
 
     }
-    //тут клавиши для работы со страницой, их можно изменить
-    // (как сделать комбинацию ctrl + колёсеко мыши я не нашёл поэтому увеличение страцины кривовато, так же добавление их в fxml за тобой)
-    @FXML
-    private void onFindF5(KeyEvent keyEvent){
-        if (keyEvent.getCode().equals(KeyCode.F5)){
-            webEngine.reload();
-        }
+
+    private void onRefreshClick() {
+
+        refreshPage();
+
     }
+
+    private void onHomeClick() {
+
+        requestField.setText(new Settings().getSystem());
+
+        updateRequest();
+        refreshPage();
+
+    }
+
+    // горячие клавиши
+
+    @FXML
+    private void onFindF5(KeyEvent keyEvent) {
+
+        if (keyEvent.getCode().equals(KeyCode.F5))
+            refreshPage();
+
+    }
+
     @FXML
     private void onFindCTRL(KeyEvent keyEvent) {
+
         Settings settings = new Settings();
-        if (keyEvent.getCode().equals(KeyCode.CONTROL)){
+
+        if (keyEvent.getCode().equals(KeyCode.CONTROL)) {
+
             web.setZoom(settings.getZoom() + 0.25);
             settings.setZoom((int) (settings.getZoom() + 0.25));
+
         }
     }
+
     @FXML
     private void onFindALT(KeyEvent keyEvent) {
+
         Settings settings = new Settings();
-        if (keyEvent.getCode().equals(KeyCode.ALT)){
+
+        if (keyEvent.getCode().equals(KeyCode.ALT)) {
+
             web.setZoom(settings.getZoom() - 0.25);
             settings.setZoom((int) (settings.getZoom() - 0.25));
+
         }
     }
 }
