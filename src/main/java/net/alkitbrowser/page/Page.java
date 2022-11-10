@@ -71,6 +71,7 @@ public class Page {
             pageThread.start();
 
             pageController.setTextLabel();
+
         }
     }
 }

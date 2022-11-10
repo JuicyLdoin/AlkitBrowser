@@ -17,8 +17,16 @@ public class AlkitBrowser extends Application {
 
     static AlkitBrowser alkitBrowser;
 
+    public static AlkitBrowser getAlkitBrowser() {
+
+        return alkitBrowser;
+
+    }
+
     Parent main;
     Scene scene;
+
+    Settings settings;
 
     public void start(Stage stage) throws IOException {
 

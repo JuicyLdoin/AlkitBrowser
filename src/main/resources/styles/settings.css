@@ -1,0 +1,19 @@
+#backPane {
+    -fx-background-color: #ADADAD;
+
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-color: #6E6E6E;
+    -fx-border-width: 5;
+}
+
+#optionsPane {
+    -fx-background-color: #ADADAD;
+
+    -fx-border-style: hidden solid hidden hidden;
+    -fx-border-color: #6E6E6E;
+    -fx-border-width: 5;
+}
+
+#settingsPane {
+    -fx-background-color: #DAD9D9;
+}

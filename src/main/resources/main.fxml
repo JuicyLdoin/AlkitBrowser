@@ -7,7 +7,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane onKeyPressed="#onHotKeys" prefHeight="720.0" prefWidth="1080.0" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alkitbrowser.controllers.MainController">
    <center>
       <WebView fx:id="web" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
@@ -15,22 +14,32 @@
    <top>
       <VBox id="tabsPane" prefHeight="90.0" prefWidth="1080.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="20.0" prefWidth="1080.0" spacing="5.0" VBox.vgrow="ALWAYS">
+            <HBox fillHeight="false" prefHeight="20.0" prefWidth="1080.0" spacing="5.0" VBox.vgrow="ALWAYS">
                <padding>
                   <Insets left="5.0" right="5.0" />
                </padding>
                <children>
-                  <ScrollPane id="tabsScroll" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="1035.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+                  <ScrollPane id="tabsScroll" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="960.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
                      <content>
-                        <HBox fx:id="tabs" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="1030.0" spacing="5.0" />
+                        <HBox fx:id="tabs" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="950.0" spacing="5.0" />
                      </content>
                   </ScrollPane>
-                  <Button mnemonicParsing="false" onMouseClicked="#onAddPage" text="+" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onAddPage" text="+" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="7.0" />
+                     </HBox.margin></Button>
+                  <Separator id="tabsSeparator" orientation="VERTICAL" prefHeight="40.0" prefWidth="2.0" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSettingsClick" text="Settings" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="7.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </HBox>
+            <Separator prefWidth="1080.0" VBox.vgrow="ALWAYS" />
             <HBox onMouseClicked="#onHomeClick" prefHeight="35.0" prefWidth="1080.0" spacing="5.0">
                <padding>
                   <Insets left="5.0" right="5.0" top="5.0" />

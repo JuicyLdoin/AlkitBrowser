@@ -3,6 +3,7 @@ package net.alkitbrowser.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -14,15 +15,19 @@ import javafx.scene.web.WebView;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.Settings;
 import net.alkitbrowser.page.Page;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MainController implements Initializable {
+
+    final AlkitBrowser alkitBrowser = AlkitBrowser.getAlkitBrowser();
 
     @FXML
     WebView web;
@@ -164,8 +169,19 @@ public class MainController implements Initializable {
 
         requestField.setText(new Settings().getSystem());
 
-        updateRequest();
         refreshPage();
+        updateRequest();
+
+    }
+
+    @FXML
+    private void onSettingsClick() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/settings.fxml"));
+        alkitBrowser.getScene().setRoot(fxmlLoader.load());
+
+        SettingsController settingsController = fxmlLoader.getController();
+        settingsController.setSettings(alkitBrowser.getSettings());
 
     }
 
