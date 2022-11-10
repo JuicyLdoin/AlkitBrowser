@@ -5,17 +5,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 
 import java.io.IOException;
 
 @Getter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AlkitBrowser extends Application {
 
-    private Parent main;
-    private Scene scene;
+    static AlkitBrowser alkitBrowser;
+
+    Parent main;
+    Scene scene;
 
     public void start(Stage stage) throws IOException {
+
+        alkitBrowser = this;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
 
