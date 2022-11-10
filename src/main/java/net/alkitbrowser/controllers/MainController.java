@@ -12,6 +12,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.Settings;
 import net.alkitbrowser.page.Page;
@@ -37,6 +38,7 @@ public class MainController implements Initializable {
 
     // поле в котором пользователь будет вводить ссылку или запрос
     @FXML
+    @Getter
     TextField requestField;
 
     public void setHistory(WebEngine engine) {

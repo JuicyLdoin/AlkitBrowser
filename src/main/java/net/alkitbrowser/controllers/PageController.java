@@ -27,6 +27,7 @@ public class PageController {
     @Setter
     HBox body;
     @FXML
+    @Getter
     Label titleLabel;
 
     Page currentPage;
@@ -46,6 +47,11 @@ public class PageController {
     public void forwardPage(WebEngine engine){
         WebHistory history = engine.getHistory();
         history.go(1);
+    }
+    public void setTextLabel(){
+        if (!mainController.getRequestField().getText().equals("")){
+            titleLabel.setText(mainController.getRequestField().getText());
+        }
     }
     @FXML
     private void onPageClick() {

@@ -9,7 +9,7 @@
 
 <HBox id="background" fx:id="body" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onPageClick" prefHeight="20.0" prefWidth="200.0" stylesheets="@styles/tab.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alkitbrowser.controllers.PageController">
    <children>
-      <Label fx:id="titleLabel" contentDisplay="CENTER" prefHeight="17.0" prefWidth="175.0" text="Новое окно" textFill="WHITE" />
+      <Label fx:id="titleLabel" contentDisplay="CENTER" prefHeight="17.0" prefWidth="175.0" text="New Page" textFill="WHITE" />
       <Button id="closeButton" mnemonicParsing="false" onMouseClicked="#onClosePage" text="x" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />

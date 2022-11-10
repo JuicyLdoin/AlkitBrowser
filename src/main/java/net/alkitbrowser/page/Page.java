@@ -37,6 +37,8 @@ public class Page {
         pageController.setMainController(mainController);
         pageController.setBody(body);
 
+        pageController.setTextLabel();
+
         pageController.setCurrentPage(this);
 
     }
@@ -68,6 +70,7 @@ public class Page {
             pageThread = new PageThread(this, webEngine, requestBuffer, mySetting.getSystemNumber());
             pageThread.start();
 
+            pageController.setTextLabel();
         }
     }
 }

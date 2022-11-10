@@ -31,10 +31,6 @@ public class Settings {
         if (!file.exists())
             file.createNewFile();
         else {
-
-            //Gson gson = new Gson();
-            //позже тут будет логирование настроек, но блять у нас даже их настройки ещё нету
-
         }
     }
 
