@@ -5,3 +5,31 @@
     -fx-border-color: black;
     -fx-border-width: 3;
 }
+
+#tabsScroll {
+    -fx-background-color: transparent;
+}
+
+#tabsScroll .corner {
+    -fx-background-color: transparent;
+}
+
+#tabsScroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal,
+.scroll-bar:vertical {
+    -fx-background-color: black;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #5B5B5B;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    -fx-background-color: black;
+}
