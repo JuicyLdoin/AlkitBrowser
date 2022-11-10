@@ -162,17 +162,12 @@ public class MainController implements Initializable {
     // горячие клавиши
 
     @FXML
-    private void onFindF5(KeyEvent keyEvent) {
+    private void onHotKeys(KeyEvent keyEvent) {
+
+        Settings settings = new Settings();
 
         if (keyEvent.getCode().equals(KeyCode.F5))
             refreshPage();
-
-    }
-
-    @FXML
-    private void onFindCTRL(KeyEvent keyEvent) {
-
-        Settings settings = new Settings();
 
         if (keyEvent.getCode().equals(KeyCode.CONTROL)) {
 
@@ -180,12 +175,6 @@ public class MainController implements Initializable {
             settings.setZoom((int) (settings.getZoom() + 0.25));
 
         }
-    }
-
-    @FXML
-    private void onFindALT(KeyEvent keyEvent) {
-
-        Settings settings = new Settings();
 
         if (keyEvent.getCode().equals(KeyCode.ALT)) {
 
