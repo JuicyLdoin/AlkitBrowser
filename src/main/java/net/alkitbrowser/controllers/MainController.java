@@ -116,11 +116,14 @@ public class MainController implements Initializable {
     public void updateRequest() {
 
         try {
-            openedPage.createNewPage(webEngine, requestField);
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
 
+            openedPage.createNewPage(webEngine, requestField);
+
+        } catch (MalformedURLException e) {
+
+            throw new RuntimeException(e);
+
+        }
     }
 
     // обработка клика по кнопке поиска
