@@ -16,6 +16,7 @@ import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.Settings;
 import net.alkitbrowser.page.Page;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -114,7 +115,11 @@ public class MainController implements Initializable {
     // обновление запроса
     public void updateRequest() {
 
-        openedPage.createNewPage(webEngine, requestField);
+        try {
+            openedPage.createNewPage(webEngine, requestField);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
