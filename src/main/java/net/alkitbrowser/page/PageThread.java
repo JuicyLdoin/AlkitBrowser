@@ -7,7 +7,6 @@ import lombok.experimental.FieldDefaults;
 
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class PageThread extends Thread {
 
     Page page;
@@ -15,7 +14,7 @@ public class PageThread extends Thread {
     WebEngine webEngine;
     StringBuffer text;
 
-    int systemNumber = 0;
+    int systemNumber;
 
     @Override
     public synchronized void start() {

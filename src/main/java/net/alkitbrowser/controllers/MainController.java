@@ -38,6 +38,22 @@ public class MainController implements Initializable {
     @FXML
     TextField requestField;
 
+    public void setHistory(WebEngine engine) {
+
+        Settings settings = new Settings();
+
+        WebHistory history = engine.getHistory();
+        settings.setHistory(history);
+
+        ObservableList<WebHistory.Entry> entries = history.getEntries();
+
+        for (WebHistory.Entry entry : entries) {
+
+            //тут выводить entry - историю поиска
+
+        }
+    }
+
     public void setOpenedPage(Page openedPage) {
 
         requestField.setText(openedPage.getRequest());
@@ -94,21 +110,6 @@ public class MainController implements Initializable {
 
         openedPage.createNewPage(webEngine, requestField);
 
-    }
-    public void setHistory(WebEngine engine){
-
-        Settings settings = new Settings();
-
-        WebHistory history = engine.getHistory();
-        settings.setHistory(history);
-
-        ObservableList<WebHistory.Entry> entries = history.getEntries();
-
-        for (WebHistory.Entry entry : entries) {
-
-            //тут выводить entry - историю поиска
-
-        }
     }
 
     // обработка клика по кнопке поиска
