@@ -5,8 +5,10 @@
 
 #closeButton {
     -fx-background-color: transparent;
+    -fx-background-radius: 30;
 }
 
-#closeButton .hover {
+#closeButton:hover {
     -fx-background-color: #5B5B5B;
+    -fx-background-radius: 30;
 }
