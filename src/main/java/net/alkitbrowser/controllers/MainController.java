@@ -172,8 +172,6 @@ public class MainController implements Initializable {
     private void onHomeClick() {
 
         requestField.setText(new Settings().getSystem());
-
-        refreshPage();
         updateRequest();
 
     }
