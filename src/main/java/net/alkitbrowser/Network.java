@@ -12,6 +12,7 @@ import java.net.URLConnection;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Network {
     public boolean isInternetConnect() throws IOException {
+
         try {
             final URL url = new URL("http://www.google.com");
             final URLConnection conn = url.openConnection();
@@ -21,5 +22,6 @@ public class Network {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 }

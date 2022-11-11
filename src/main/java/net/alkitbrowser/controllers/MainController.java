@@ -40,6 +40,7 @@ public class MainController implements Initializable {
     Page openedPage;
 
     // список окон
+
     final ObservableList<Page> pages = FXCollections.observableArrayList();
     @FXML
     private HBox tabs;

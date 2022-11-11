@@ -36,6 +36,7 @@ public class Page {
         pageController = fxmlLoader.getController();
 
         pageController.setMainController(mainController);
+
         pageController.setBody(body);
 
         pageController.setTextLabel();

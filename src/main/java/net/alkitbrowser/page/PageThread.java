@@ -25,6 +25,7 @@ public class PageThread extends Thread {
 
         webEngine.load(AlkitBrowser.getAlkitBrowser().getSettings().getSystem(systemNumber) + text);
         Network network = new Network();
+
         try {
             if (!network.isInternetConnect()){
                 webEngine.load("https://www.google.com");
