@@ -10,7 +10,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 import lombok.AccessLevel;
 import lombok.Getter;
