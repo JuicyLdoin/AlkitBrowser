@@ -14,6 +14,10 @@
     -fx-border-width: 5;
 }
 
+#optionsButton {
+    -fx-background-color: transparent;
+}
+
 #settingsPane {
     -fx-background-color: #DAD9D9;
 }

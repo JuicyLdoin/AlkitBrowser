@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -11,13 +12,13 @@
    <top>
       <HBox id="backPane" fillHeight="false" prefHeight="50.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#onBackClick" prefHeight="25.0" prefWidth="50.0" text="Back" HBox.hgrow="ALWAYS">
+            <Button mnemonicParsing="false" onMouseClicked="#onBackClick" prefHeight="25.0" prefWidth="50.0" text="Назад" HBox.hgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Pane prefHeight="0.0" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="25.0" prefWidth="50.0" text="Save" HBox.hgrow="ALWAYS">
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="25.0" prefWidth="75.0" text="Сохранить" HBox.hgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -29,7 +30,15 @@
       </HBox>
    </top>
    <left>
-      <VBox id="optionsPane" fillWidth="false" prefHeight="670.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <VBox id="optionsPane" fillWidth="false" minWidth="200.0" prefHeight="670.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="optionsButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="История" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </left>
    <center>
       <VBox id="settingsPane" fx:id="contentBox" fillWidth="false" prefHeight="670.0" prefWidth="880.0" BorderPane.alignment="CENTER" />
