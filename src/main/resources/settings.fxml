@@ -31,7 +31,7 @@
    <left>
       <VBox id="optionsPane" fillWidth="false" minWidth="200.0" prefHeight="670.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="optionsButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="История" VBox.vgrow="ALWAYS">
+            <Button id="optionsButton" mnemonicParsing="false" onMouseClicked="#onHistoryClick" prefHeight="50.0" prefWidth="180.0" text="История" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
