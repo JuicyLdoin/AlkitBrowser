@@ -67,6 +67,11 @@ public class MainController implements Initializable {
         requestField.setText(openedPage.getRequest());
         openedPage.createNewPage(webEngine, openedPage.getRequest());
 
+        if (this.openedPage != null)
+            this.openedPage.getPageController().getBody().setId("background");
+
+        openedPage.getPageController().getBody().setId("openedBackground");
+
         this.openedPage = openedPage;
 
     }
@@ -97,7 +102,6 @@ public class MainController implements Initializable {
         if (openedPage.equals(page))
             setOpenedPage(pages.get(0));
 
-        page.getPageThread().stop();
         pages.remove(page);
 
     }

@@ -39,7 +39,6 @@ public class PageController {
     public void backPage(WebEngine engine){
 
         WebHistory history = engine.getHistory();
-
         history.go(-1);
 
     }

@@ -3,6 +3,11 @@
     -fx-background-radius: 30;
 }
 
+#openedBackground {
+    -fx-background-color: #DAD9D9;
+    -fx-background-radius: 30;
+}
+
 #closeButton {
     -fx-background-color: transparent;
     -fx-background-radius: 30;

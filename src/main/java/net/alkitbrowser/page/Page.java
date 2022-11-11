@@ -51,9 +51,6 @@ public class Page {
 
     public void createNewPage(WebEngine webEngine, String request) {
 
-        if (pageThread != null && pageThread.isAlive())
-            pageThread.stop();
-
         this.request = request;
 
         webEngine.load(request);

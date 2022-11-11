@@ -28,8 +28,11 @@ public class AlkitBrowser extends Application {
 
     Settings settings;
 
+    boolean work;
+
     public void start(Stage stage) throws IOException {
 
+        work = true;
         alkitBrowser = this;
 
         settings = new Settings();
@@ -51,6 +54,12 @@ public class AlkitBrowser extends Application {
         stage.show();
 
         System.out.println(Thread.currentThread().getName());
+
+    }
+
+    public void stop() {
+
+        work = false;
 
     }
 }
