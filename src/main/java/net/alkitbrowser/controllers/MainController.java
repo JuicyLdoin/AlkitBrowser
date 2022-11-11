@@ -16,7 +16,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.AlkitBrowser;
-import net.alkitbrowser.Network;
 import net.alkitbrowser.Settings;
 import net.alkitbrowser.page.Page;
 
@@ -49,22 +48,6 @@ public class MainController implements Initializable {
     @FXML
     @Getter
     TextField requestField;
-
-    public void setHistory(WebEngine engine) {
-
-        Settings settings = new Settings();
-
-        WebHistory history = engine.getHistory();
-        settings.setHistory(history);
-
-        ObservableList<WebHistory.Entry> entries = history.getEntries();
-
-        for (WebHistory.Entry entry : entries) {
-
-            //тут выводить entry - историю поиска
-
-        }
-    }
 
     public void setOpenedPage(Page openedPage) {
 
@@ -194,6 +177,8 @@ public class MainController implements Initializable {
         alkitBrowser.getScene().setRoot(fxmlLoader.load());
 
         SettingsController settingsController = fxmlLoader.getController();
+
+        settingsController.setMainController(this);
         settingsController.setSettings(alkitBrowser.getSettings());
 
     }

@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.AlkitBrowser;
-import net.alkitbrowser.Settings;
 import net.alkitbrowser.controllers.MainController;
 import net.alkitbrowser.controllers.PageController;
 
@@ -23,7 +22,6 @@ public class Page {
 
     final PageController pageController;
     PageThread pageThread;
-    //StringBuffer pageName = new StringBuffer();
     String request;
 
     @SneakyThrows

@@ -3,8 +3,6 @@ package net.alkitbrowser.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebHistory;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,21 +31,6 @@ public class PageController {
 
         // сделать установку тайтла
 
-
-    }
-
-    // две функции для путешествий по истории, биндов на них нет. Мб сделать кнопки или контрл + скм
-    public void backPage(WebEngine engine){
-
-        WebHistory history = engine.getHistory();
-        history.go(-1);
-
-    }
-
-    public void forwardPage(WebEngine engine){
-
-        WebHistory history = engine.getHistory();
-        history.go(1);
 
     }
 

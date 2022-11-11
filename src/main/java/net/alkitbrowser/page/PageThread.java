@@ -24,14 +24,16 @@ public class PageThread extends Thread {
     public synchronized void start() {
 
         webEngine.load(AlkitBrowser.getAlkitBrowser().getSettings().getSystem(systemNumber) + text);
-        Network network = new Network();
 
         try {
-            if (!network.isInternetConnect()){
+
+            if (!new Network().isInternetConnect())
                 webEngine.load("https://www.google.com");
-            }
+
         } catch (IOException e) {
+
             throw new RuntimeException(e);
+
         }
     }
 }
