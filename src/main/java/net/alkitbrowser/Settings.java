@@ -50,7 +50,7 @@ public class Settings {
         switch (systemNumber) {
 
             case 0 -> system = "https://duckduckgo.com/";
-            case 1 -> system = "https://www.google.ru/search?q=";
+            case 1 -> system = "https://www.google.com/search?q=";
             case 2 -> system = "https://yandex.ru/search/?text=";
             case 3 -> system = "https://search.brave.com/search?q=";
             case 4 -> system = "https://search.yahoo.com/search?p=";

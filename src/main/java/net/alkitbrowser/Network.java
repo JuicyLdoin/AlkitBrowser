@@ -1,5 +1,6 @@
 package net.alkitbrowser;
 
+import javafx.scene.web.WebEngine;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
@@ -10,25 +11,7 @@ import java.net.URLConnection;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Network {
-    boolean internetConnect;
-
-    {
-        try {
-            internetConnect = isInternetConnect();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void internetConnect(){
-        if (internetConnect){
-            //инёрнет есть
-        } else {
-            // нету
-        }
-    }
-
-    private boolean isInternetConnect() throws IOException {
+    public boolean isInternetConnect() throws IOException {
         try {
             final URL url = new URL("http://www.google.com");
             final URLConnection conn = url.openConnection();

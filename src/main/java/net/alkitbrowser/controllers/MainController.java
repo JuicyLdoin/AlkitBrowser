@@ -16,6 +16,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.AlkitBrowser;
+import net.alkitbrowser.Network;
 import net.alkitbrowser.Settings;
 import net.alkitbrowser.page.Page;
 
@@ -31,6 +32,8 @@ public class MainController implements Initializable {
 
     @FXML
     WebView web;
+
+    @Getter
     WebEngine webEngine;
 
     // открытое окно
@@ -95,7 +98,6 @@ public class MainController implements Initializable {
 
     }
 
-    // удаление окна
     public void removePage(Page page) {
 
         if (pages.size() == 1)
@@ -113,7 +115,6 @@ public class MainController implements Initializable {
 
         webEngine = web.getEngine();
 
-        // при изменении списка окон обновляем их отображение
         pages.addListener((javafx.beans.Observable observable) -> {
 
             tabs.getChildren().clear();
