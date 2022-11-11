@@ -19,9 +19,18 @@ public class Settings {
     StringBuffer nameOS = new StringBuffer("Windows XP");
     int systemNumber = 0;
     List<String> searchSystemList = new ArrayList<>();
-    int zoom = 1;
+    float zoom = 1;
     WebHistory history;
     String pageName = "New Page";
+
+    public void setZoom(float zoom) {
+
+        if (zoom < 0 || zoom > 2)
+            return;
+
+        this.zoom = zoom;
+
+    }
 
     // в page.fxml добавь эту переменную, а дальше с ней будем работать (я про pageName)
     public void saveSettings() throws IOException {

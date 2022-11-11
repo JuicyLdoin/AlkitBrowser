@@ -192,7 +192,7 @@ public class MainController implements Initializable {
     @FXML
     private void onHotKeys(KeyEvent keyEvent) {
 
-        Settings settings = new Settings();
+        Settings settings = AlkitBrowser.getAlkitBrowser().getSettings();
 
         if (keyEvent.getCode().equals(KeyCode.F5))
             refreshPage();
@@ -200,14 +200,14 @@ public class MainController implements Initializable {
         if (keyEvent.getCode().equals(KeyCode.CONTROL)) {
 
             web.setZoom(settings.getZoom() + 0.25);
-            settings.setZoom((int) (settings.getZoom() + 0.25));
+            settings.setZoom(settings.getZoom() + 0.25f);
 
         }
 
         if (keyEvent.getCode().equals(KeyCode.ALT)) {
 
             web.setZoom(settings.getZoom() - 0.25);
-            settings.setZoom((int) (settings.getZoom() - 0.25));
+            settings.setZoom(settings.getZoom() - 0.25f);
 
         }
     }
