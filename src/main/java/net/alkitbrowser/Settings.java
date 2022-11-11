@@ -31,11 +31,10 @@ public class Settings {
         this.zoom = zoom;
 
     }
-
-    // в page.fxml добавь эту переменную, а дальше с ней будем работать (я про pageName)
     public void saveSettings() throws IOException {
 
         File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\setting.json");
+
 
         if (!file.exists())
             file.createNewFile();
