@@ -25,7 +25,7 @@ public class Settings {
 
     public void setZoom(float zoom) {
 
-        if (zoom <= 0 || zoom >= 2)
+        if (zoom <= 0.25 || zoom >= 1.75)
             return;
 
         this.zoom = zoom;
