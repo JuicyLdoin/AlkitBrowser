@@ -32,6 +32,8 @@ public class AlkitBrowser extends Application {
 
         alkitBrowser = this;
 
+        settings = new Settings();
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
 
         main = fxmlLoader.load();
