@@ -77,10 +77,12 @@ public class MainController implements Initializable {
     }
 
     // добавление нового окна
-    public void addPage() {
+    public void addPage() throws MalformedURLException {
+
+        requestField.setText(new Settings().getSystem());
 
         Page page = new Page(this);
-        page.createNewPage(webEngine, "");
+        page.createNewPage(webEngine, requestField);
 
         setOpenedPage(page);
         pages.add(page);
@@ -119,8 +121,15 @@ public class MainController implements Initializable {
 
         });
 
-        addPage();
+        try {
 
+            addPage();
+
+        } catch (MalformedURLException e) {
+
+            throw new RuntimeException(e);
+
+        }
     }
 
     // обновление запроса
@@ -155,7 +164,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void onAddPage() {
+    private void onAddPage() throws MalformedURLException {
 
         addPage();
 
