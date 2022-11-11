@@ -38,7 +38,7 @@ public class MainController implements Initializable {
     // открытое окно
     Page openedPage;
 
-    // список окон
+    //  список окон
 
     final ObservableList<Page> pages = FXCollections.observableArrayList();
     @FXML
