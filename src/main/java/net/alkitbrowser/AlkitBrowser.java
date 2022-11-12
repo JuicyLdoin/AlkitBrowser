@@ -40,7 +40,7 @@ public class AlkitBrowser extends Application {
         if (new File(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json").exists())
             settings = new Gson().fromJson(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json", Settings.class);
         else
-            settings = getAlkitBrowser().getSettings();
+            settings = new Settings();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
 
