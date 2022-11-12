@@ -34,8 +34,8 @@ public class Settings {
 
         SettingsController control = new SettingsController();
 
-        File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\history.json");
         File filePath = new File(System.getProperty("user.home") + "\\AlkitBrowser");
+        File file = new File(filePath, "history.json");
 
         if (!filePath.exists())
             filePath.createNewFile();
