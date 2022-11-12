@@ -2,6 +2,7 @@ package net.alkitbrowser.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebHistory;
@@ -11,14 +12,14 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.Settings;
-import net.alkitbrowser.controllers.settings.GlobalSettingsController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ResourceBundle;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class SettingsController {
+public class SettingsController implements Initializable {
 
     @Setter
     MainController mainController;
@@ -28,6 +29,13 @@ public class SettingsController {
 
     @FXML
     private VBox contentBox;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        settings.setSettingsController(this);
+
+    }
 
     public void save() {
 

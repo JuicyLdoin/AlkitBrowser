@@ -16,6 +16,8 @@ import java.io.IOException;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Settings {
 
+    transient SettingsController settingsController;
+
     String systemNumber = "duckduckgo";
     float zoom = 1;
 
@@ -30,22 +32,20 @@ public class Settings {
 
     public void saveSettings() throws IOException {
 
-        SettingsController control = new SettingsController();
-
         File filePath = new File(System.getProperty("user.home") + "\\AlkitBrowser");
 
         File fileHistoryJson = new File(filePath, "history.json");
         File fileSettingsJson = new File(filePath, "settings.json");
 
         if (!filePath.exists())
-            filePath.mkdirs();
+            filePath.createNewFile();
         else if (!fileHistoryJson.exists())
-            fileHistoryJson.mkdirs();
+            fileHistoryJson.createNewFile();
         else
-            new Gson().toJson(control.getHistory(), new FileWriter(fileHistoryJson));
+            new Gson().toJson(settingsController.getHistory(), new FileWriter(fileHistoryJson));
 
         if (!fileSettingsJson.exists())
-            fileSettingsJson.mkdirs();
+            fileSettingsJson.createNewFile();
         else
             new Gson().toJson(this, new FileWriter(fileSettingsJson));
 
