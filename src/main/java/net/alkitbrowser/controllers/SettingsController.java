@@ -1,7 +1,5 @@
 package net.alkitbrowser.controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -13,12 +11,8 @@ import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.Settings;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Path;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -70,29 +64,39 @@ public class SettingsController {
         WebHistory history = mainController.getWebEngine().getHistory();
         settings.setHistory(history);
 
-        for (WebHistory.Entry entry : history.getEntries()) {
+        for (WebHistory.Entry entry : history.getEntries())
             try {
-                URL check = new URL(entry.getUrl());
-                contentBox.getChildren().add(new Label(check.getAuthority() + "   -   " + entry.getUrl()));
+
+                contentBox.getChildren().add(new Label(new URL(entry.getUrl()).getAuthority() + "   -   " + entry.getUrl()));
+
             } catch (IOException e) {
+
                 throw new RuntimeException(e);
+
             }
-        }
     }
+
     public String getHistory(){
+
+        StringBuilder stringBuilder = new StringBuilder();
+
         contentBox.getChildren().clear();
 
         WebHistory history = mainController.getWebEngine().getHistory();
         settings.setHistory(history);
 
-        for (WebHistory.Entry entry : history.getEntries()) {
+        for (WebHistory.Entry entry : history.getEntries())
             try {
-                URL check = new URL(entry.getUrl());
-                return check.getAuthority() + "   -   " + entry.getUrl();
+
+                stringBuilder.append(new URL(entry.getUrl()).getAuthority()).append("   -   ").append(entry.getUrl()).append("\n");
+
             } catch (IOException e) {
+
                 throw new RuntimeException(e);
+
             }
-        }
-        return null;
+
+        return stringBuilder.toString();
+
     }
 }

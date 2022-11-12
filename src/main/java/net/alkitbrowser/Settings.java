@@ -38,13 +38,12 @@ public class Settings {
         File filePath = new File(System.getProperty("user.home") + "\\AlkitBrowser");
 
         if (!filePath.exists())
+            filePath.createNewFile();
+        else if (!file.exists())
             file.createNewFile();
-        else {
-            if (!file.exists())
-                file.createNewFile();
-            else
-                new Gson().toJson(control.getHistory(), new FileWriter(file));
-        }
+        else
+            new Gson().toJson(control.getHistory(), new FileWriter(file));
+
     }
 
     public String getSystem(int systemNumber) {
