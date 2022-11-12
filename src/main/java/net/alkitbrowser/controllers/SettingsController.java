@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -73,16 +74,25 @@ public class SettingsController {
             try {
                 URL check = new URL(entry.getUrl());
                 contentBox.getChildren().add(new Label(check.getAuthority() + "   -   " + entry.getUrl()));
-                File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json");
-
-                if (!file.exists())
-                    file.createNewFile();
-                else {
-                    new Gson().toJson(this, new FileWriter(file));
-                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+    }
+    public String getHistory(){
+        contentBox.getChildren().clear();
+
+        WebHistory history = mainController.getWebEngine().getHistory();
+        settings.setHistory(history);
+
+        for (WebHistory.Entry entry : history.getEntries()) {
+            try {
+                URL check = new URL(entry.getUrl());
+                return check.getAuthority() + "   -   " + entry.getUrl();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return null;
     }
 }

@@ -1,12 +1,15 @@
 package net.alkitbrowser;
 
+import com.google.gson.Gson;
 import javafx.scene.web.WebHistory;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import net.alkitbrowser.controllers.SettingsController;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 @Getter
@@ -29,12 +32,18 @@ public class Settings {
 
     public void saveSettings() throws IOException {
 
-        File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json");
+        SettingsController control = new SettingsController();
 
-        if (!file.exists())
+        File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\history.json");
+        File filePath = new File(System.getProperty("user.home") + "\\AlkitBrowser");
+
+        if (!filePath.exists())
             file.createNewFile();
         else {
-
+            if (!file.exists())
+                file.createNewFile();
+            else
+                new Gson().toJson(control.getHistory(), new FileWriter(file));
         }
     }
 
