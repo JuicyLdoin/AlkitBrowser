@@ -33,17 +33,11 @@ public class MainController implements Initializable {
 
     @Getter
     WebEngine webEngine;
-
-    // открытое окно
     Page openedPage;
-
-    //  список окон
-
     final ObservableList<Page> pages = FXCollections.observableArrayList();
     @FXML
     private HBox tabs;
 
-    // поле в котором пользователь будет вводить ссылку или запрос
     @FXML
     @Getter
     TextField requestField;
@@ -62,7 +56,6 @@ public class MainController implements Initializable {
 
     }
 
-    // добавление нового окна
     public void addPage() throws MalformedURLException {
 
         requestField.setText(new Settings().getSystem());
@@ -116,7 +109,6 @@ public class MainController implements Initializable {
         }
     }
 
-    // обновление запроса
     public void updateRequest() {
 
         try {
@@ -130,7 +122,6 @@ public class MainController implements Initializable {
         }
     }
 
-    // обработка клика по кнопке поиска
     @FXML
     private void onFindClick() {
 
@@ -138,7 +129,6 @@ public class MainController implements Initializable {
 
     }
 
-    // обработка запроса при нажатии кнопки Enter
     @FXML
     private void onFindEnter(KeyEvent keyEvent) {
 
@@ -179,8 +169,6 @@ public class MainController implements Initializable {
         settingsController.setMainController(this);
 
     }
-
-    // горячие клавиши
 
     @FXML
     private void onHotKeys(KeyEvent keyEvent) {
