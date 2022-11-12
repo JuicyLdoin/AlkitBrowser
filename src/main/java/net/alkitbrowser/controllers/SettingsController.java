@@ -36,8 +36,15 @@ public class SettingsController {
 
     public void save() {
 
+        try {
 
+            settings.saveSettings();
 
+        } catch (IOException e) {
+
+            throw new RuntimeException(e);
+
+        }
     }
 
     @FXML
