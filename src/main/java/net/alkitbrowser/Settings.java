@@ -38,14 +38,14 @@ public class Settings {
         File fileSettingsJson = new File(filePath, "settings.json");
 
         if (!filePath.exists())
-            filePath.createNewFile();
+            filePath.mkdirs();
         else if (!fileHistoryJson.exists())
-            fileHistoryJson.createNewFile();
+            fileHistoryJson.mkdirs();
         else
             new Gson().toJson(settingsController.getHistory(), new FileWriter(fileHistoryJson));
 
         if (!fileSettingsJson.exists())
-            fileSettingsJson.createNewFile();
+            fileSettingsJson.mkdirs();
         else
             new Gson().toJson(this, new FileWriter(fileSettingsJson));
 
