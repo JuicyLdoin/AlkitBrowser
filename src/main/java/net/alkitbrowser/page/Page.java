@@ -68,7 +68,7 @@ public class Page {
         }
     }
 
-    public void downloadFileFromPage(URL url){
+    public void downloadFileFromPage(URL url) {
 
         url.getRef();
 

@@ -18,7 +18,6 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Pane prefHeight="50.0" prefWidth="530.0" HBox.hgrow="ALWAYS" />
             <ComboBox fx:id="systemNumber" onMouseClicked="#onSystemNumberChange" prefWidth="150.0" promptText="duckduckgo" visibleRowCount="5" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
