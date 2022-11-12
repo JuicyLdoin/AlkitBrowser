@@ -1,65 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.web.*?>
-<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.web.WebView?>
 <BorderPane onKeyPressed="#onHotKeys" prefHeight="720.0" prefWidth="1080.0" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alkitbrowser.controllers.MainController">
    <center>
       <WebView fx:id="web" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <VBox id="tabsPane" prefHeight="95.0" prefWidth="1080.0" spacing="5.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox fillHeight="false" prefHeight="20.0" prefWidth="1080.0" spacing="5.0" VBox.vgrow="ALWAYS">
-               <padding>
-                  <Insets left="5.0" right="5.0" />
-               </padding>
-               <children>
-                  <ScrollPane id="tabsScroll" minHeight="40.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="940.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
-                     <content>
-                        <HBox fx:id="tabs" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="930.0" spacing="5.0" />
-                     </content>
-                  </ScrollPane>
-                  <Button mnemonicParsing="false" onMouseClicked="#onAddPage" text="+" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets top="7.0" />
-                     </HBox.margin></Button>
-                  <Separator id="tabsSeparator" orientation="VERTICAL" prefHeight="40.0" prefWidth="2.0" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSettingsClick" text="Настройки" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets top="7.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-            </HBox>
-            <Separator prefWidth="1080.0" VBox.vgrow="ALWAYS" />
-            <HBox prefHeight="35.0" prefWidth="1080.0" spacing="5.0">
-               <padding>
-                  <Insets left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#onRefreshClick" text="Обновить">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#onHomeClick" text="Главная">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <TextField fx:id="requestField" onKeyPressed="#onFindEnter" promptText="Введите поисковый запрос или URL ссылку" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onFindClick" text="Поиск" />
-               </children>
-            </HBox>
-         </children>
+         <HBox fillHeight="false" prefHeight="20.0" prefWidth="1080.0" spacing="5.0" VBox.vgrow="ALWAYS">
+            <padding>
+               <Insets left="5.0" right="5.0"/>
+            </padding>
+            <VBox.margin>
+               <Insets bottom="5.0"/>
+            </VBox.margin>
+            <ScrollPane id="tabsScroll" minHeight="40.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0"
+                        prefWidth="940.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+               <HBox fx:id="tabs" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="930.0" spacing="5.0"/>
+            </ScrollPane>
+            <Button mnemonicParsing="false" onMouseClicked="#onAddPage" text="+" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets top="7.0"/>
+               </HBox.margin>
+            </Button>
+            <Separator id="tabsSeparator" orientation="VERTICAL" prefHeight="40.0" prefWidth="2.0"/>
+            <Button mnemonicParsing="false" onMouseClicked="#onSettingsClick" text="Настройки" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets top="7.0"/>
+               </HBox.margin>
+            </Button>
+         </HBox>
+         <Separator prefWidth="1080.0" VBox.vgrow="ALWAYS"/>
+         <HBox prefHeight="35.0" prefWidth="1080.0" spacing="5.0">
+            <padding>
+               <Insets left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <Button mnemonicParsing="false" onMouseClicked="#onRefreshClick" text="Обновить">
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#onHomeClick" text="Главная">
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+            </Button>
+            <TextField fx:id="requestField" onKeyPressed="#onFindEnter"
+                       promptText="Введите поисковый запрос или URL ссылку" HBox.hgrow="ALWAYS"/>
+            <Button mnemonicParsing="false" onMouseClicked="#onFindClick" text="Поиск"/>
+         </HBox>
       </VBox>
    </top>
 </BorderPane>

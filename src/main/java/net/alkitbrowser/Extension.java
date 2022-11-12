@@ -9,11 +9,4 @@ public class Extension {
         engine.executeScript(script);
 
     }
-
-    public void startAdBlock(WebEngine engine){
-
-        engine.executeScript("");
-        //тут надо запускать ad-block скрипт который в resources, но я пока думаю над его переработкой да и у нас нет настроек для его влючения
-
-    }
 }

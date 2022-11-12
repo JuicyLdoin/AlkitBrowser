@@ -46,7 +46,6 @@ public class Page {
     public void createNewPage(WebEngine webEngine, TextField requestField) throws MalformedURLException {
 
         createNewPage(webEngine, requestField.getText());
-
     }
 
     public void createNewPage(WebEngine webEngine, String request) {
