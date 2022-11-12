@@ -81,6 +81,8 @@ public class SettingsController {
     @FXML
     private void onHistoryClick() {
 
+        save();
+
         contentBox.getChildren().clear();
 
         WebHistory history = mainController.getWebEngine().getHistory();
@@ -99,6 +101,8 @@ public class SettingsController {
 
     @FXML
     private void onSettingsClick() throws IOException {
+
+        save();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/globalSettings.fxml"));
 
