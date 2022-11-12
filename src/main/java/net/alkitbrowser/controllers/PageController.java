@@ -28,29 +28,28 @@ public class PageController {
     @Getter
     Label titleLabel;
 
+    @Setter
     Page currentPage;
-
-    public void setCurrentPage(Page currentPage) {
-        this.currentPage = currentPage;
-    }
 
     public void setTextLabel(){
 
         Pattern checkURL = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
         Matcher checkURLM = checkURL.matcher(mainController.getRequestField().getText());
 
-        if (!mainController.getRequestField().getText().equals("")){
-
-            if (checkURLM.matches()) {
+        if (!mainController.getRequestField().getText().equals(""))
+            if (checkURLM.matches())
                 try {
+
                     URL check = new URL(mainController.getRequestField().getText());
                     titleLabel.setText(check.getAuthority());
-                } catch (MalformedURLException e) {
-                    throw new RuntimeException(e);
-                }
-            } else titleLabel.setText(mainController.getRequestField().getText());
 
-        }
+                } catch (MalformedURLException e) {
+
+                    throw new RuntimeException(e);
+
+                }
+            else
+                titleLabel.setText(mainController.getRequestField().getText());
 
     }
     @FXML
