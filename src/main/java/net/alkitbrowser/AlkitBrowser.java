@@ -47,12 +47,12 @@ public class AlkitBrowser extends Application {
 
         scene = new Scene(main, 820, 480);
 
+        stage.setMaximized(true);
+
         stage.setTitle("AlkitBrowser");
         stage.setScene(scene);
 
         stage.show();
-
-        System.out.println(Thread.currentThread().getName());
 
     }
 

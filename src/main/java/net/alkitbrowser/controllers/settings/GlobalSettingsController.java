@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class GlobalSettings implements Initializable {
+public class GlobalSettingsController implements Initializable {
 
     final AlkitBrowser alkitBrowser = AlkitBrowser.getAlkitBrowser();
     final Settings settings = alkitBrowser.getSettings();

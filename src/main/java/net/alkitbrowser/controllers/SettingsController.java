@@ -1,6 +1,7 @@
 package net.alkitbrowser.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebHistory;
@@ -10,6 +11,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.Settings;
+import net.alkitbrowser.controllers.settings.GlobalSettingsController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +40,26 @@ public class SettingsController {
             throw new RuntimeException(e);
 
         }
+    }
+
+    public String getHistory() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        WebHistory history = mainController.getWebEngine().getHistory();
+
+        for (WebHistory.Entry entry : history.getEntries())
+            try {
+
+                stringBuilder.append(new URL(entry.getUrl()).getAuthority()).append("   -   ").append(entry.getUrl()).append("\n");
+
+            } catch (IOException e) {
+
+                throw new RuntimeException(e);
+
+            }
+
+        return stringBuilder.toString();
+
     }
 
     @FXML
@@ -75,23 +97,13 @@ public class SettingsController {
             }
     }
 
-    public String getHistory() {
+    @FXML
+    private void onSettingsClick() throws IOException {
 
-        StringBuilder stringBuilder = new StringBuilder();
-        WebHistory history = mainController.getWebEngine().getHistory();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/globalSettings.fxml"));
 
-        for (WebHistory.Entry entry : history.getEntries())
-            try {
-
-                stringBuilder.append(new URL(entry.getUrl()).getAuthority()).append("   -   ").append(entry.getUrl()).append("\n");
-
-            } catch (IOException e) {
-
-                throw new RuntimeException(e);
-
-            }
-
-        return stringBuilder.toString();
+        contentBox.getChildren().clear();
+        contentBox.getChildren().add(fxmlLoader.load());
 
     }
 }
