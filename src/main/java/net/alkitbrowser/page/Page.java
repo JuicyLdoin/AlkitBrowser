@@ -12,6 +12,7 @@ import net.alkitbrowser.controllers.MainController;
 import net.alkitbrowser.controllers.PageController;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -65,5 +66,8 @@ public class Page {
             pageController.setTextLabel();
 
         }
+    }
+    public void downloadFileFromPage(URL url){
+        url.getRef();
     }
 }
