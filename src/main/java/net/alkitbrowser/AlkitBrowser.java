@@ -1,5 +1,6 @@
 package net.alkitbrowser;
 
+import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,7 +36,7 @@ public class AlkitBrowser extends Application {
         work = true;
         alkitBrowser = this;
 
-        settings = new Settings();
+        settings = new Gson().fromJson(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json", Settings.class);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
 
