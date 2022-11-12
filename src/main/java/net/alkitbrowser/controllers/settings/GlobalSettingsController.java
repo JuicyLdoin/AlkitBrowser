@@ -27,6 +27,7 @@ public class GlobalSettingsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         systemNumber.getItems().addAll(Arrays.asList("duckduckgo", "google", "yandex", "brave", "yahoo"));
+        systemNumber.setValue(settings.getSystemNumber());
 
     }
 
