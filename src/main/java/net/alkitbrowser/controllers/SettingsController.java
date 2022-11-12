@@ -22,17 +22,10 @@ public class SettingsController {
     MainController mainController;
 
     final AlkitBrowser alkitBrowser = AlkitBrowser.getAlkitBrowser();
-
-    Settings settings;
+    final Settings settings = alkitBrowser.getSettings();
 
     @FXML
     private VBox contentBox;
-
-    public void setSettings(Settings settings) {
-
-        this.settings = settings;
-
-    }
 
     public void save() {
 

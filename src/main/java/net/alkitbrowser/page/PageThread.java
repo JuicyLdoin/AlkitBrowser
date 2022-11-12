@@ -16,12 +16,10 @@ public class PageThread extends Thread {
     WebEngine webEngine;
     StringBuffer text;
 
-    int systemNumber;
-
     @Override
     public synchronized void start() {
 
-        webEngine.load(AlkitBrowser.getAlkitBrowser().getSettings().getSystem(systemNumber) + text);
+        webEngine.load(AlkitBrowser.getAlkitBrowser().getSettings().getSystem() + text);
 
         try {
 

@@ -176,9 +176,7 @@ public class MainController implements Initializable {
         alkitBrowser.getScene().setRoot(fxmlLoader.load());
 
         SettingsController settingsController = fxmlLoader.getController();
-
         settingsController.setMainController(this);
-        settingsController.setSettings(alkitBrowser.getSettings());
 
     }
 

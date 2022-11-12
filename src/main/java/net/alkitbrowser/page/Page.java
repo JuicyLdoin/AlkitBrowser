@@ -8,7 +8,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
-import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.controllers.MainController;
 import net.alkitbrowser.controllers.PageController;
 
@@ -60,7 +59,7 @@ public class Page {
 
         if (!request.equals("") && !checkURLM.matches()) {
 
-            pageThread = new PageThread(webEngine, requestBuffer, AlkitBrowser.getAlkitBrowser().getSettings().getSystemNumber());
+            pageThread = new PageThread(webEngine, requestBuffer);
             pageThread.start();
 
             pageController.setTextLabel();

@@ -27,9 +27,9 @@ public class AlkitBrowser extends Application {
 
     Parent main;
     Scene scene;
+
     Settings settings;
     boolean work;
-
 
     public void start(Stage stage) throws IOException {
 

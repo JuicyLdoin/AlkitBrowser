@@ -16,7 +16,7 @@ import java.io.IOException;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Settings {
 
-    int systemNumber = 0;
+    String systemNumber = "duckduckgo";
     float zoom = 1;
 
     public void setZoom(float zoom) {
@@ -51,17 +51,17 @@ public class Settings {
 
     }
 
-    public String getSystem(int systemNumber) {
+    public String getSystem(String systemNumber) {
 
         String system = "";
 
         switch (systemNumber) {
 
-            case 0 -> system = "https://duckduckgo.com/";
-            case 1 -> system = "https://www.google.com/search?q=";
-            case 2 -> system = "https://yandex.ru/search/?text=";
-            case 3 -> system = "https://search.brave.com/search?q=";
-            case 4 -> system = "https://search.yahoo.com/search?p=";
+            case "duckduckgo" -> system = "https://duckduckgo.com/";
+            case "google" -> system = "https://www.google.com/search?q=";
+            case "yandex" -> system = "https://yandex.ru/search/?text=";
+            case "brave" -> system = "https://search.brave.com/search?q=";
+            case "yahoo" -> system = "https://search.yahoo.com/search?p=";
 
         }
 

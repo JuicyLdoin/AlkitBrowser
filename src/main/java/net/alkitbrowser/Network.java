@@ -1,13 +1,9 @@
 package net.alkitbrowser;
 
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
-
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Network {
 
     public boolean isInternetConnect() throws IOException {
