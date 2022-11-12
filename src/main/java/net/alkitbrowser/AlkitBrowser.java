@@ -27,10 +27,9 @@ public class AlkitBrowser extends Application {
 
     Parent main;
     Scene scene;
-
     Settings settings;
-
     boolean work;
+
 
     public void start(Stage stage) throws IOException {
 
@@ -45,16 +44,11 @@ public class AlkitBrowser extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
 
         main = fxmlLoader.load();
-        scene = new Scene(main, 820, 480);
 
-        // ==================================================
-        // Set options to stage
-        // ==================================================
+        scene = new Scene(main, 820, 480);
 
         stage.setTitle("AlkitBrowser");
         stage.setScene(scene);
-
-        stage.setMaximized(true);
 
         stage.show();
 
