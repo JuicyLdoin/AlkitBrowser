@@ -1,7 +1,6 @@
 package net.alkitbrowser;
 
 import com.google.gson.Gson;
-import javafx.scene.web.WebHistory;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +18,6 @@ public class Settings {
 
     int systemNumber = 0;
     float zoom = 1;
-    WebHistory history;
 
     public void setZoom(float zoom) {
 

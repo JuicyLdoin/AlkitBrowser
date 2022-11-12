@@ -62,7 +62,6 @@ public class SettingsController {
         contentBox.getChildren().clear();
 
         WebHistory history = mainController.getWebEngine().getHistory();
-        settings.setHistory(history);
 
         for (WebHistory.Entry entry : history.getEntries())
             try {
@@ -76,14 +75,10 @@ public class SettingsController {
             }
     }
 
-    public String getHistory(){
+    public String getHistory() {
 
         StringBuilder stringBuilder = new StringBuilder();
-
-        contentBox.getChildren().clear();
-
         WebHistory history = mainController.getWebEngine().getHistory();
-        settings.setHistory(history);
 
         for (WebHistory.Entry entry : history.getEntries())
             try {
