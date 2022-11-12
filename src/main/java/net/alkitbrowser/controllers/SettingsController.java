@@ -1,5 +1,7 @@
 package net.alkitbrowser.controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -11,6 +13,9 @@ import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.Settings;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -68,7 +73,14 @@ public class SettingsController {
             try {
                 URL check = new URL(entry.getUrl());
                 contentBox.getChildren().add(new Label(check.getAuthority() + "   -   " + entry.getUrl()));
-            } catch (MalformedURLException e) {
+                File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json");
+
+                if (!file.exists())
+                    file.createNewFile();
+                else {
+                    new Gson().toJson(this, new FileWriter(file));
+                }
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }

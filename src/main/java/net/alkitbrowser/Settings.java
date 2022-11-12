@@ -29,7 +29,7 @@ public class Settings {
 
     public void saveSettings() throws IOException {
 
-        File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\setting.json");
+        File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json");
 
         if (!file.exists())
             file.createNewFile();
