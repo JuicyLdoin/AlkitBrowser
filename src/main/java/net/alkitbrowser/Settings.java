@@ -33,6 +33,7 @@ public class Settings {
         SettingsController control = new SettingsController();
 
         File filePath = new File(System.getProperty("user.home") + "\\AlkitBrowser");
+
         File fileHistoryJson = new File(filePath, "history.json");
         File fileSettingsJson = new File(filePath, "settings.json");
 
@@ -43,15 +44,11 @@ public class Settings {
         else
             new Gson().toJson(control.getHistory(), new FileWriter(fileHistoryJson));
 
-
         if (!fileSettingsJson.exists())
             fileSettingsJson.createNewFile();
-        else if (!fileSettingsJson.exists())
-            fileSettingsJson.createNewFile();
-        else {
-            new Gson().toJson(systemNumber, new FileWriter(fileSettingsJson));
-            new Gson().toJson(zoom, new FileWriter(fileSettingsJson));
-        }
+        else
+            new Gson().toJson(this, new FileWriter(fileSettingsJson));
+
     }
 
     public String getSystem(int systemNumber) {
