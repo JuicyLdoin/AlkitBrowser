@@ -4,14 +4,15 @@ module com.example.alkitbrowser {
     requires javafx.fxml;
     requires javafx.web;
 
+    requires com.google.gson;
+
     requires lombok;
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
 
-    opens net.alkitbrowser.controllers to javafx.fxml, javafx.web, lombok;
-
-    exports net.alkitbrowser;
-    opens net.alkitbrowser to javafx.fxml, javafx.web, lombok;
+    opens net.alkitbrowser.controllers to javafx.fxml, javafx.web, lombok, com.google.gson;
+    opens net.alkitbrowser.page to javafx.fxml, javafx.web, lombok, com.google.gson;
+    opens net.alkitbrowser to javafx.fxml, javafx.web, lombok, com.google.gson;
 
 }

@@ -14,6 +14,7 @@ import java.io.IOException;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AlkitBrowser extends Application {
+
     static AlkitBrowser alkitBrowser;
 
     public static AlkitBrowser getAlkitBrowser() {

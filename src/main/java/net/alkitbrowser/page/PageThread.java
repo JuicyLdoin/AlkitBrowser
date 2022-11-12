@@ -13,8 +13,6 @@ import java.io.IOException;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PageThread extends Thread {
 
-    Page page;
-
     WebEngine webEngine;
     StringBuffer text;
 

@@ -17,6 +17,7 @@ public class Settings {
     int systemNumber = 0;
     float zoom = 1;
     WebHistory history;
+
     public void setZoom(float zoom) {
 
         if (zoom <= 0.25 || zoom >= 1.75)
@@ -25,10 +26,10 @@ public class Settings {
         this.zoom = zoom;
 
     }
+
     public void saveSettings() throws IOException {
 
         File file = new File(System.getProperty("user.home") + "\\AlkitBrowser\\setting.json");
-
 
         if (!file.exists())
             file.createNewFile();

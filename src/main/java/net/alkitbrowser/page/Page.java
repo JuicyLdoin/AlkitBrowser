@@ -36,10 +36,9 @@ public class Page {
         pageController.setMainController(mainController);
 
         pageController.setBody(body);
+        pageController.setCurrentPage(this);
 
         pageController.setTextLabel();
-
-        pageController.setCurrentPage(this);
 
     }
 
@@ -61,7 +60,7 @@ public class Page {
 
         if (!request.equals("") && !checkURLM.matches()) {
 
-            pageThread = new PageThread(this, webEngine, requestBuffer, AlkitBrowser.getAlkitBrowser().getSettings().getSystemNumber());
+            pageThread = new PageThread(webEngine, requestBuffer, AlkitBrowser.getAlkitBrowser().getSettings().getSystemNumber());
             pageThread.start();
 
             pageController.setTextLabel();
