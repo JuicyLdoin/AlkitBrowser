@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
+import java.io.File;
 import java.io.IOException;
 
 @Getter
@@ -36,7 +37,10 @@ public class AlkitBrowser extends Application {
         work = true;
         alkitBrowser = this;
 
-        settings = new Gson().fromJson(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json", Settings.class);
+        if (new File(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json").exists())
+            settings = new Gson().fromJson(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json", Settings.class);
+        else
+            settings = getAlkitBrowser().getSettings();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
 
