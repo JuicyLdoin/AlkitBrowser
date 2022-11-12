@@ -11,6 +11,9 @@ import lombok.experimental.FieldDefaults;
 import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.Settings;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SettingsController {
@@ -61,8 +64,13 @@ public class SettingsController {
         WebHistory history = mainController.getWebEngine().getHistory();
         settings.setHistory(history);
 
-        for (WebHistory.Entry entry : history.getEntries())
-            contentBox.getChildren().add(new Label(entry.getUrl()));
-
+        for (WebHistory.Entry entry : history.getEntries()) {
+            try {
+                URL check = new URL(entry.getUrl());
+                contentBox.getChildren().add(new Label(check.getAuthority()));
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
