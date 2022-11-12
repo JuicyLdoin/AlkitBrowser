@@ -63,9 +63,13 @@ public class AlkitBrowser extends Application {
         Settings settings = getAlkitBrowser().getSettings();
 
         try {
+
             settings.saveSettings();
+
         } catch (IOException e) {
+
             throw new RuntimeException(e);
+
         }
     }
 }
