@@ -67,7 +67,7 @@ public class SettingsController {
         for (WebHistory.Entry entry : history.getEntries()) {
             try {
                 URL check = new URL(entry.getUrl());
-                contentBox.getChildren().add(new Label(check.getAuthority()));
+                contentBox.getChildren().add(new Label(check.getAuthority() + "   -   " + entry.getUrl()));
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
             }
