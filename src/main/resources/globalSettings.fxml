@@ -21,5 +21,15 @@
             <ComboBox fx:id="systemNumber" onMouseClicked="#onSystemNumberChange" prefWidth="150.0" promptText="duckduckgo" visibleRowCount="5" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
+      <VBox prefHeight="570.0" prefWidth="840.0">
+         <children>
+            <Label prefWidth="310.0" text="JavaScript скрипт при запуске браузера" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="jsField" onKeyPressed="#onJSChange" prefHeight="200.0" prefWidth="840.0" promptText="Script" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
    </children>
 </VBox>

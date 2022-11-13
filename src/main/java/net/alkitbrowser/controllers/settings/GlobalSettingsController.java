@@ -3,6 +3,7 @@ package net.alkitbrowser.controllers.settings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
@@ -23,11 +24,16 @@ public class GlobalSettingsController implements Initializable {
     @FXML
     ComboBox<String> systemNumber;
 
+    @FXML
+    TextArea jsField;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         systemNumber.getItems().addAll(Arrays.asList("duckduckgo", "google", "yandex", "brave", "yahoo"));
         systemNumber.setValue(settings.getSystemNumber());
+
+        jsField.setText(settings.getJSStart());
 
     }
 
@@ -35,6 +41,13 @@ public class GlobalSettingsController implements Initializable {
     private void onSystemNumberChange() {
 
         settings.setSystemNumber(systemNumber.getValue());
+
+    }
+
+    @FXML
+    private void onJSChange() {
+
+        settings.setJSStart(jsField.getText());
 
     }
 }
