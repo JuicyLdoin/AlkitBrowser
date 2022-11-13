@@ -9,8 +9,10 @@ import javafx.stage.Stage;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+import net.alkitbrowser.controllers.MainController;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 @Getter
@@ -37,7 +39,7 @@ public class AlkitBrowser extends Application {
         alkitBrowser = this;
 
         if (new File(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json").exists())
-            settings = new Gson().fromJson(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json", Settings.class);
+            settings = new Gson().fromJson(new FileReader(System.getProperty("user.home") + "\\AlkitBrowser\\settings.json"), Settings.class);
         else
             settings = new Settings();
 
@@ -53,6 +55,9 @@ public class AlkitBrowser extends Application {
         stage.setScene(scene);
 
         stage.show();
+
+        MainController mainController = fxmlLoader.getController();
+        Extension.startScript(mainController.getWebEngine(), settings.getJSStart());
 
     }
 

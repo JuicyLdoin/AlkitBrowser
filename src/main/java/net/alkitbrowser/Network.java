@@ -10,8 +10,7 @@ public class Network {
 
         try {
 
-            final URL url = new URL("https://duckduckgo.com/");
-            final URLConnection conn = url.openConnection();
+            final URLConnection conn = new URL("https://www.google.com/").openConnection();
 
             conn.connect();
             conn.getInputStream().close();

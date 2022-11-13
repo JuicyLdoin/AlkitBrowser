@@ -1,5 +1,6 @@
 package net.alkitbrowser.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -25,33 +26,47 @@ public class PageController {
     @Setter
     HBox body;
     @FXML
-    @Getter
     Label titleLabel;
 
     @Setter
     Page currentPage;
 
-    public void setTextLabel(){
+    public void setTitleLabel() {
+
+        String location = mainController.getWebEngine().getLocation();
+
+        if (location == null)
+            return;
+
+        Platform.runLater(() -> {
+
+            if (!mainController.getRequestField().isFocused())
+                mainController.getRequestField().setText(location);
+
+        });
 
         Pattern checkURL = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
-        Matcher checkURLM = checkURL.matcher(mainController.getRequestField().getText());
+        Matcher checkURLM = checkURL.matcher(location);
 
-        if (!mainController.getRequestField().getText().equals(""))
+        if (!location.equals(""))
             if (checkURLM.matches())
-                try {
+                Platform.runLater(() -> {
 
-                    URL check = new URL(mainController.getRequestField().getText());
-                    titleLabel.setText(check.getAuthority());
+                    try {
 
-                } catch (MalformedURLException e) {
+                        titleLabel.setText(new URL(location).getAuthority());
 
-                    throw new RuntimeException(e);
+                    } catch (MalformedURLException e) {
 
-                }
+                        throw new RuntimeException(e);
+
+                    }
+                });
             else
-                titleLabel.setText(mainController.getRequestField().getText());
+                Platform.runLater(() -> titleLabel.setText(location));
 
     }
+
     @FXML
     private void onPageClick() {
 

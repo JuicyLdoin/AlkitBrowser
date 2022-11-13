@@ -6,8 +6,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
+import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.controllers.MainController;
 import net.alkitbrowser.controllers.PageController;
 
@@ -21,7 +23,10 @@ import java.util.regex.Pattern;
 public class Page {
 
     final PageController pageController;
-    PageThread pageThread;
+
+    PageTask pageTask;
+    Thread pageThread;
+
     String request;
 
     @SneakyThrows
@@ -38,34 +43,41 @@ public class Page {
         pageController.setBody(body);
         pageController.setCurrentPage(this);
 
-        pageController.setTextLabel();
+        pageController.setTitleLabel();
 
     }
 
-    public void createNewPage(WebEngine webEngine, TextField requestField) throws MalformedURLException {
+    public void createNewPage(WebEngine webEngine, TextField requestField) {
 
         createNewPage(webEngine, requestField.getText());
+
     }
 
-    public void createNewPage(WebEngine webEngine, String request) {
+    public void createNewPage(WebEngine webEngine, @NonNull String request) {
+
+        if (request.equals(""))
+            return;
+
+        Pattern checkURL = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
+        Matcher checkURLM = checkURL.matcher(new StringBuffer(request));
+
+        if (!checkURLM.matches())
+            request = AlkitBrowser.getAlkitBrowser().getSettings().getSystem() + request;
 
         this.request = request;
 
         webEngine.load(request);
 
-        StringBuffer requestBuffer = new StringBuffer(request);
+        if (pageThread != null)
+            pageThread.stop();
 
-        Pattern checkURL = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
-        Matcher checkURLM = checkURL.matcher(requestBuffer);
+        pageTask = new PageTask(this, webEngine, request);
 
-        if (!request.equals("") && !checkURLM.matches()) {
+        pageThread = new Thread(pageTask);
+        pageThread.start();
 
-            pageThread = new PageThread(webEngine, requestBuffer);
-            pageThread.start();
+        pageController.setTitleLabel();
 
-            pageController.setTextLabel();
-
-        }
     }
 
     public void downloadFileFromPage(URL url) {

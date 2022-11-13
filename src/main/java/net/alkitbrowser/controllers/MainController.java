@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -27,6 +28,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     final AlkitBrowser alkitBrowser = AlkitBrowser.getAlkitBrowser();
+    final Settings settings = alkitBrowser.getSettings();
 
     @FXML
     WebView web;
@@ -61,7 +63,7 @@ public class MainController implements Initializable {
         requestField.setText(new Settings().getSystem());
 
         Page page = new Page(this);
-        page.createNewPage(webEngine, requestField);
+        page.createNewPage(webEngine, requestField.getText());
 
         setOpenedPage(page);
         pages.add(page);
@@ -70,6 +72,7 @@ public class MainController implements Initializable {
 
     public void refreshPage() {
 
+        openedPage.createNewPage(webEngine, openedPage.getRequest());
         webEngine.reload();
 
     }
@@ -86,9 +89,12 @@ public class MainController implements Initializable {
 
     }
 
+    BorderPane settingsPage;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        web.setZoom(settings.getZoom());
         webEngine = web.getEngine();
 
         pages.addListener((javafx.beans.Observable observable) -> {
@@ -107,19 +113,28 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
 
         }
-    }
 
-    public void updateRequest() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/settings.fxml"));
 
         try {
 
-            openedPage.createNewPage(webEngine, requestField);
+            settingsPage = fxmlLoader.load();
 
-        } catch (MalformedURLException e) {
+        } catch (IOException e) {
 
             throw new RuntimeException(e);
 
         }
+
+        SettingsController settingsController = fxmlLoader.getController();
+        settingsController.setMainController(this);
+
+    }
+
+    public void updateRequest() {
+
+        openedPage.createNewPage(webEngine, requestField.getText());
+
     }
 
     @FXML
@@ -160,13 +175,9 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void onSettingsClick() throws IOException {
+    private void onSettingsClick() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/settings.fxml"));
-        alkitBrowser.getScene().setRoot(fxmlLoader.load());
-
-        SettingsController settingsController = fxmlLoader.getController();
-        settingsController.setMainController(this);
+        alkitBrowser.getScene().setRoot(settingsPage);
 
     }
 

@@ -21,6 +21,8 @@ public class Settings {
     String systemNumber = "duckduckgo";
     float zoom = 1;
 
+    String JSStart = "";
+
     public void setZoom(float zoom) {
 
         if (zoom <= 0.25 || zoom >= 1.75)
@@ -39,15 +41,26 @@ public class Settings {
 
         if (!filePath.exists())
             filePath.mkdirs();
-        else if (!fileHistoryJson.exists())
-            fileHistoryJson.mkdirs();
-        else
-            new Gson().toJson(settingsController.getHistory(), new FileWriter(fileHistoryJson));
+
+        if (!fileHistoryJson.exists())
+            fileHistoryJson.createNewFile();
+
+        FileWriter historyWriter = new FileWriter(fileHistoryJson);
+
+        new Gson().toJson(settingsController.getHistory(), historyWriter);
+
+        historyWriter.flush();
+        historyWriter.close();
 
         if (!fileSettingsJson.exists())
-            fileSettingsJson.mkdirs();
-        else
-            new Gson().toJson(this, new FileWriter(fileSettingsJson));
+            fileSettingsJson.createNewFile();
+
+        FileWriter settingsWriter = new FileWriter(fileSettingsJson);
+
+        new Gson().toJson(this, settingsWriter);
+
+        settingsWriter.flush();
+        settingsWriter.close();
 
     }
 

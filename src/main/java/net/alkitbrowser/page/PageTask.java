@@ -1,5 +1,6 @@
 package net.alkitbrowser.page;
 
+import javafx.concurrent.Task;
 import javafx.scene.web.WebEngine;
 import lombok.Value;
 import net.alkitbrowser.AlkitBrowser;
@@ -8,12 +9,16 @@ import net.alkitbrowser.Network;
 import java.io.IOException;
 
 @Value
-public class PageThread extends Thread {
+public class PageTask extends Task<Void> {
+
+    Page page;
 
     WebEngine webEngine;
-    StringBuffer text;
+    String text;
 
-    public PageThread(WebEngine webEngine, StringBuffer text) {
+    public PageTask(Page page, WebEngine webEngine, String text) {
+
+        this.page = page;
 
         this.webEngine = webEngine;
         this.text = text;
@@ -28,26 +33,31 @@ public class PageThread extends Thread {
             throw new RuntimeException(e);
 
         }
+
+        webEngine.load(text);
+
     }
 
     @Override
-    public synchronized void run() {
-
-        System.out.println("run");
+    protected Void call() {
 
         while (AlkitBrowser.getAlkitBrowser().isWork()) {
 
-            System.out.println(webEngine.getLocation());
+            try {
+
+                Thread.sleep(1000);
+
+            } catch (InterruptedException e) {
+
+                throw new RuntimeException(e);
+
+            }
+
+            page.getPageController().setTitleLabel();
 
         }
-    }
 
-    @Override
-    public synchronized void start() {
-
-        System.out.println("start");
-
-        webEngine.load(AlkitBrowser.getAlkitBrowser().getSettings().getSystem() + text);
+        return null;
 
     }
 }
