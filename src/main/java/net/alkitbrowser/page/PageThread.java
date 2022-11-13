@@ -1,25 +1,22 @@
 package net.alkitbrowser.page;
 
 import javafx.scene.web.WebEngine;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
+import lombok.Value;
 import net.alkitbrowser.AlkitBrowser;
 import net.alkitbrowser.Network;
 
 import java.io.IOException;
 
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Value
 public class PageThread extends Thread {
 
     WebEngine webEngine;
     StringBuffer text;
 
-    @Override
-    public synchronized void start() {
+    public PageThread(WebEngine webEngine, StringBuffer text) {
 
-        webEngine.load(AlkitBrowser.getAlkitBrowser().getSettings().getSystem() + text);
+        this.webEngine = webEngine;
+        this.text = text;
 
         try {
 
@@ -31,5 +28,26 @@ public class PageThread extends Thread {
             throw new RuntimeException(e);
 
         }
+    }
+
+    @Override
+    public synchronized void run() {
+
+        System.out.println("run");
+
+        while (AlkitBrowser.getAlkitBrowser().isWork()) {
+
+            System.out.println(webEngine.getLocation());
+
+        }
+    }
+
+    @Override
+    public synchronized void start() {
+
+        System.out.println("start");
+
+        webEngine.load(AlkitBrowser.getAlkitBrowser().getSettings().getSystem() + text);
+
     }
 }
