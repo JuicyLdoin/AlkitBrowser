@@ -21,7 +21,7 @@ public class PageThread extends Thread {
         try {
 
             if (!new Network().isInternetConnect())
-                webEngine.load("https://www.google.com");
+                webEngine.load("https://www.google.com"); //load google dino
 
         } catch (IOException e) {
 
